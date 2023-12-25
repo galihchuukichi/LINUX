@@ -1,3 +1,5 @@
 ls ---> show list
-touch ---> create file
-nano ---> akses file
+touch [NAMA] ---> create file
+nano [NAMA] ---> akses untuk file
+cat [NAMA] ---> keluarkan isi file
+sudo apt update ---> update daftar package
