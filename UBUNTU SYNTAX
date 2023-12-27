@@ -4,3 +4,15 @@ nano [NAMA] ---> akses untuk file
 cat [NAMA] ---> keluarkan isi file
 sudo apt update ---> update daftar package
 sudo apt upgrade ---> upgrade all apt
+w -- write
+r -- read
+x -- execute
+chmode ---> change mode (Ubah permission suatu file)
+  chmod [option] [ugoa][+-=][rwx] namafile
+  ex : chmod u+x latihan1
+chown ---> change ownership
+  chown user_baru:group_baru namafile
+  ex : sudo chown ruby:ruby latihan1
+chgrp ---> change group
+  chgrp group_baru namafile
+  ex : sudo chgrp ruby latihan1
