@@ -16,3 +16,4 @@ chown ---> change ownership
 chgrp ---> change group
   chgrp group_baru namafile
   ex : sudo chgrp ruby latihan1
+-R ---> Recursive (directory beserta isinya)
