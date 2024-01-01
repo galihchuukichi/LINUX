@@ -94,6 +94,12 @@ Menjalankan perintah yang serupa yang pernah dijalankan pada history command ke-
 #|tou+TAB EQUAL TO touch
 Auto Command completion. Ada ungkapan bahwa untuk mahir pada bash, yang perlu diperhatikan adalah kata “MANTAB”, yaitu perintah ‘man’ dan tombol TAB.
 
+#|nano [NAMA FILE] EQUAL TO pico [NAMA FILE]
+Mengedit isi berkas. Jika berkas belum ada, nano akan membuat berkas baru.
+Analogi yang bisa digunakan untuk memahami perbedaan antara pico dan nano adalah:
+Pico adalah seperti sepeda yang hanya memiliki satu gigi dan rem. Pico bisa digunakan untuk berjalan-jalan di jalan yang datar dan tidak terlalu ramai, tetapi tidak bisa digunakan untuk bersepeda di jalan yang menanjak, menurun, atau berliku-liku.
+Nano adalah seperti sepeda yang memiliki beberapa gigi dan rem. Nano bisa digunakan untuk berjalan-jalan di jalan yang datar dan tidak terlalu ramai, tetapi juga bisa digunakan untuk bersepeda di jalan yang menanjak, menurun, atau berliku-liku. Nano juga memiliki lampu, bel, dan klakson yang bisa digunakan untuk memberi sinyal atau peringatan.
+
 
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
