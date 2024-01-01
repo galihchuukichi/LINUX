@@ -91,6 +91,9 @@ riwayat dari perintah-perintah yang pernah dieksekusi sebelumnya
 #|!297
 Menjalankan perintah yang serupa yang pernah dijalankan pada history command ke-297
 
+#|tou+TAB EQUAL TO touch
+Auto Command completion. Ada ungkapan bahwa untuk mahir pada bash, yang perlu diperhatikan adalah kata “MANTAB”, yaitu perintah ‘man’ dan tombol TAB.
+
 
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
