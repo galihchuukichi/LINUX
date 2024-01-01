@@ -1,4 +1,6 @@
-ls ---> show list
+#|ls
+Menampilkan list isi folder
+
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
 cat [NAMA] ---> keluarkan isi file
