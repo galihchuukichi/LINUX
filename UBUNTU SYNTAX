@@ -85,6 +85,12 @@ Menampilkan manual dari sebuah perintah. Cara penggunaannya dengan mengetikkan n
 #|pwd
 (Print Working Directory). Perintah ini akan menampilkan path lengkap direktori kerja Anda saat ini.
 
+#|/home/ubuntu/.bash_history EQUAL TO history
+riwayat dari perintah-perintah yang pernah dieksekusi sebelumnya
+
+#|!297
+Menjalankan perintah yang serupa yang pernah dijalankan pada history command ke-297
+
 
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
