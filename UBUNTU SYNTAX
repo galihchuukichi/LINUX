@@ -1,5 +1,90 @@
+#|FORMAT : command_name [ -options ] <arguments>
+
 #|ls
-Menampilkan list isi folder
+Menampilkan list file dalam folder
+
+#|ls -a
+Menampilkan list seluruh file termasuk hidden file pada folder
+-a EQUAL TO all
+
+#|ls -a -l EQUAL TO ls -al
+Menampilkan list seluruh file termasuk hidden file dalan format panjang
+-a EQUAL TO all
+-l EQUAL TO long
+
+#|ls /usr/share
+Menampilkan daftar file dan direktori yang ada di dalam /usr/share direktori. 
+/usr/share usr berada pada direktori / selayaknya home
+
+#|ls -al /usr/share
+Menampilkan daftar file dan direktori yang ada di dalam /usr/share direktori dan dengan format panjang
+
+#|su 
+Berganti user. Perintah ini diambil dari kata bahasa Inggris: switch user.
+
+#|sudo 
+(Super User Do, Switch User and the Do). Menjalankan perintah sebagai super user atau user lainnya.
+
+#|cp 
+Menyalin berkas atau direktori. Perintah ini diambil dari kata bahasa Inggris: copy.
+
+#|mv
+Mengganti nama; atau memindahkan posisi berkas atau direktori. Perintah ini diambil dari kata bahasa Inggris: move.
+
+#|rm 
+Menghapus berkas atau direktori. Perintah ini diambil dari kata bahasa Inggris: remove.
+
+#|mkdir 
+Membuat direktori baru. Perintah ini diambil dari frase bahasa Inggris: make directory.
+
+#|rmdir 
+Menghapus direktori yang kosong. Perintah ini diambil dari frase bahasa Inggris: remove directory.
+
+#|cat 
+Melihat ataupun menggabungkan isi berkas. Perintah ini diambil dari kata bahasa Inggris: concatenate.
+
+#|less
+Melihat isi berkas per halaman teks.
+
+#|touch
+Mengubah waktu akses terakhir sebuah berkas (timestamp). Apabila berkas belum ada, perintah ini akan membuat berkas baru.
+
+#|who
+Melihat siapa saja yang sedang login di komputer.
+
+#|echo
+Menampilkan perintah atau teks yang diketikkan.
+
+#|free
+Menampilkan penggunaan dari memori nyata (RAM) dan memori virtual (SWAP).
+
+#|top
+Melihat semua program yang sedang berjalan, termasuk pemakaian prosesor dan RAM.
+
+#|ps ux
+Melihat daftar semua program yang sedang berjalan/digunakan beserta nomor prosesnya (PID).
+
+#|du
+Melihat besarnya ukuran direktori yang telah digunakan.
+
+#|df
+Melihat besar ukuran partisi disk dan ruang yang tersisa.
+
+#|date
+Menampilkan tanggal dan jam.
+
+#|exit
+Keluar (logout) dari user yang sedang digunakan. Bisa juga dengan menekan Ctrl + D.
+
+#|--help
+Ini adalah opsi yang umum dalam menampilkan bantuan dari sebuah perintah. Ditulis di akhir perintah dengan jeda satu spasi. Contohnya: ls --help
+
+#|man
+Menampilkan manual dari sebuah perintah. Cara penggunaannya dengan mengetikkan nama perintah yang dicari tahu setelah perintah man.
+
+#|pwd
+(Print Working Directory). Perintah ini akan menampilkan path lengkap direktori kerja Anda saat ini.
+
 
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
