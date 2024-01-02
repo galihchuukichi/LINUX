@@ -129,6 +129,12 @@ Menampilkan UID (User ID) dan informasi umum untuk user saat ini
 #|id [username]
 Menampilkan UID dan informasi umum untuk [username]
 
+#|ps -aux
+Menampilkan proses yang sedang dijalankan oleh sistem beserta informasi user yang menjalankannya.
+ps EQUAL TO process status
+a EQUAL TO menampilkan proses dari semua pengguna
+u EQUAL TO menampilkan format berorientasi pengguna yang memberikan informasi rinci tentang prose
+x EQUAL TO menampilkan proses tanpa terminal pengendali
 
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
