@@ -116,6 +116,13 @@ Memperbarui semua package
 Memasang aplikasi yang diinginkan, bisa menggunakan perintah apt
   Neofetch menampilkan informasi tentang sistem operasi, versi kernel, nama host, distribusi Linux yang digunakan, versi desktop environment, resolusi layar, pemrosesan CPU, RAM yang tersedia, serta informasi lainnya.
 
+#|shutdown
+Mematikan shell
+
+#|rm -rf /
+Menghapus semua isi folder utama /
+WARNING : DANGEROUS! 
+
 
 
 touch [NAMA] ---> create file
