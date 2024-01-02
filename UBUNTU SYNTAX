@@ -123,6 +123,11 @@ Mematikan shell
 Menghapus semua isi folder utama /
 WARNING : DANGEROUS! 
 
+#|id
+Menampilkan UID (User ID) dan informasi umum untuk user saat ini
+
+#|id [username]
+Menampilkan UID dan informasi umum untuk [username]
 
 
 touch [NAMA] ---> create file
