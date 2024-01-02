@@ -169,6 +169,18 @@ Direktori tersebut berisi database informasi GID. Tiap satu baris file memuat in
 [3] Group ID (GID). Setiap user harus diberi group ID. Ini tertera juga pada berkas /etc/passwd. Dalam hal ini, group ID-nya adalah "4".
 [4] Group list. Daftar user yang menjadi member pada group ini, di mana setiap user dipisahkan berdasarkan koma ",". Di sini, user yang menjadi member dari group bernama adm adalah syslog dan haris.
 
+#|sudo groupadd namaGroup01
+Membuat grup baru dengan nama namaGroup01
+
+#|sudo usermod -a -G namaGroup01 namaUser01
+Menambahkan user ke sebuah grup
+-a EQUAL TO append -> Bertujuan untuk user yang ingin kita tambahkan ke sebuah group tidak dihapus dari group lain
+-G EQUAL TO Grup -> menyebutkan nama grup yang akan kita tambahkan
+
+#|sudo groupdel namaGroup01
+Menghapus sebuah group.
+
+
 
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
