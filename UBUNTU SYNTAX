@@ -33,6 +33,7 @@ Mengganti nama; atau memindahkan posisi berkas atau direktori. Perintah ini diam
 
 #|rm 
 Menghapus berkas atau direktori. Perintah ini diambil dari kata bahasa Inggris: remove.
+Menghapus direktori bisa dengan rm -r namaDirektori
 
 #|mkdir 
 Membuat direktori baru. Perintah ini diambil dari frase bahasa Inggris: make directory.
@@ -81,6 +82,8 @@ Ini adalah opsi yang umum dalam menampilkan bantuan dari sebuah perintah. Dituli
 
 #|man
 Menampilkan manual dari sebuah perintah. Cara penggunaannya dengan mengetikkan nama perintah yang dicari tahu setelah perintah man.
+  Contohnya : man man (Menampilkan tutorial syntax man)
+              man useradd (Menampilkan tutorial syntax dan opsi useradd)
 
 #|pwd
 (Print Working Directory). Perintah ini akan menampilkan path lengkap direktori kerja Anda saat ini.
@@ -137,6 +140,7 @@ u EQUAL TO menampilkan format berorientasi pengguna yang memberikan informasi ri
 x EQUAL TO menampilkan proses tanpa terminal pengendali
 
 #|cat home/ubuntu/etc/passwd
+Direktori tersebut adalah database berbentuk file untuk pemetaan UID. Setiap baris pada file tersebut memuat informasi mengenai satu user.
 [1]ruby:[2]x:[3]1001:[4]1001:[5]G. Ruby,04,89858451,-:[6]/home/ruby:[7]/bin/bash
 [1] Username. Dalam hal ini adalah "ruby".
 [2] Password dari user yang awalnya disimpan di sini dalam bentuk sudah terenkripsi. Karena alasan keamanan (file /etc/passwd bisa dilihat oleh semua user), maka password dipindah ke dalam file /etc/shadow yang akan dibahas di poin berikutnya. Oleh karenanya, bagian ini harus selalu terisi dengan karakter "x".
@@ -145,6 +149,25 @@ x EQUAL TO menampilkan proses tanpa terminal pengendali
 [5] User ID Info. Bisa berisi nama lengkap, nomor ruangan, nomor handphone, dan sebagainya. Bagian ini diisi dengan: "G. Ruby (nama lengkap), 04 (nomor ruangan), 89858451 (nomor HP untuk kerja), - (nomor rumah, diisi '-')".
 [6] Home directory dari user. Ini adalah direktori awal ketika shell dimulai dan berisi data (berkas-berkas yang dimiliki oleh user), pengaturan, atau konfigurasi dari user tersebut. Bagian ini diisi dengan "/home/ruby".
 [7] Shell yang dijadikan default untuk user ini. Dalam hal ini adalah bash dengan lokasi "/bin/bash". Untuk tipe system user, umumnya menggunakan /sbin/nologin apabila tidak membutuhkan login secara interaktif sehingga kita tidak bisa masuk atau log in ke user tersebut.
+
+#|sudo adduser namaUser01
+Menambah user dan menghasilkan direktori home untuk user yang dibuat. Langsung diminta untuk mengisi informasi tambahan berupa New password, Full Name, Room Number, Work Phone, Home Phone, dan Other.
+
+#|sudo useradd namaUser02
+Menambah user saja tanpa menghasilkan direktori home untuk user yang dibuat dan tanpa diminta untuk mengisi informasi tambahan.
+
+#|sudo userdel namaUser01
+Menghapus user
+Opsi -r untuk sekalian menghapus home directory dari user tersebut
+Sehingga jadinya :sudo userdel -r namaUser01
+
+#|cat /home/ubuntu/etc/group
+Direktori tersebut berisi database informasi GID. Tiap satu baris file memuat informasi sebuah group.
+[1]adm:[2]x:[3]4:[4]syslog,haris
+[1] Group name. Nama dari group, dalam hal ini adalah "adm".
+[2] Group password. Secara umum sebenarnya password ini sudah tidak digunakan. Jadi, bagian ini terisi karakter "x".
+[3] Group ID (GID). Setiap user harus diberi group ID. Ini tertera juga pada berkas /etc/passwd. Dalam hal ini, group ID-nya adalah "4".
+[4] Group list. Daftar user yang menjadi member pada group ini, di mana setiap user dipisahkan berdasarkan koma ",". Di sini, user yang menjadi member dari group bernama adm adalah syslog dan haris.
 
 
 touch [NAMA] ---> create file
