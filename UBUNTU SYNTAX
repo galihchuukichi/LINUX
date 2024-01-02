@@ -96,9 +96,26 @@ Auto Command completion. Ada ungkapan bahwa untuk mahir pada bash, yang perlu di
 
 #|nano [NAMA FILE] EQUAL TO pico [NAMA FILE]
 Mengedit isi berkas. Jika berkas belum ada, nano akan membuat berkas baru.
-Analogi yang bisa digunakan untuk memahami perbedaan antara pico dan nano adalah:
-Pico adalah seperti sepeda yang hanya memiliki satu gigi dan rem. Pico bisa digunakan untuk berjalan-jalan di jalan yang datar dan tidak terlalu ramai, tetapi tidak bisa digunakan untuk bersepeda di jalan yang menanjak, menurun, atau berliku-liku.
-Nano adalah seperti sepeda yang memiliki beberapa gigi dan rem. Nano bisa digunakan untuk berjalan-jalan di jalan yang datar dan tidak terlalu ramai, tetapi juga bisa digunakan untuk bersepeda di jalan yang menanjak, menurun, atau berliku-liku. Nano juga memiliki lampu, bel, dan klakson yang bisa digunakan untuk memberi sinyal atau peringatan.
+  Analogi yang bisa digunakan untuk memahami perbedaan antara pico dan nano adalah:
+  Pico adalah seperti sepeda yang hanya memiliki satu gigi dan rem. Pico bisa digunakan untuk berjalan-jalan di jalan yang datar dan tidak terlalu ramai, tetapi tidak bisa digunakan untuk bersepeda di jalan yang menanjak, menurun, atau berliku-liku.
+  Nano adalah seperti sepeda yang memiliki beberapa gigi dan rem. Nano bisa digunakan untuk berjalan-jalan di jalan yang datar dan tidak terlalu ramai, tetapi juga bisa digunakan untuk bersepeda di jalan yang menanjak, menurun, atau berliku-liku. Nano juga memiliki lampu, bel, dan klakson yang bisa digunakan untuk memberi sinyal atau peringatan.
+
+#|free
+Menampilkan ukuran memori
+
+#|sudo apt update
+Memperbarui daftar package yang ada di komputer Anda sesuai dengan daftar sumber yang telah didefinisikan di dalam berkas /etc/apt/sources.list dan direktori /etc/apt/sources.list.d/ Kemudian kita akan mendapatkan informasi apakah ada package yang lebih baru atau tidak.
+
+#|apt list --upgradable
+Melihat daftar list informasi package yang lebih baru
+
+#|sudo apt upgrade
+Memperbarui semua package
+
+#|sudo apt install neofetch
+Memasang aplikasi yang diinginkan, bisa menggunakan perintah apt
+  Neofetch menampilkan informasi tentang sistem operasi, versi kernel, nama host, distribusi Linux yang digunakan, versi desktop environment, resolusi layar, pemrosesan CPU, RAM yang tersedia, serta informasi lainnya.
+
 
 
 touch [NAMA] ---> create file
