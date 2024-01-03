@@ -242,8 +242,10 @@ Dapat digunakan untuk melihat, membuat, menghapus, memodifikasi, mengubah ukuran
 Perintah untuk memanipulasi tabel partisi pada file atau perangkat loop dengan menggunakan utilitas fdisk.
 
 #|sudo parted /dev/sda
-Perintah untuk memanipulasi tabel partisi pada file atau perangkat loop dengan menggunakan utilitas parted.
+Perintah untuk memanipulasi tabel partisi pada file sda dengan menggunakan utilitas parted.
 
+#|sudo parted /dev/loop0
+Perintah untuk memanipulasi tabel partisi pada file atau perangkat loop dengan menggunakan utilitas parted.
 
 
 
