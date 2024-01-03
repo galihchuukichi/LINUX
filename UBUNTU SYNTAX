@@ -239,7 +239,15 @@ Dapat digunakan untuk melihat, membuat, menghapus, memodifikasi, mengubah ukuran
   Command tersebut bertujuan mengetahui jumlah byte, sektor, model disk, ukuran sektor, label dari disk, identitas disk, path disk, awal dan akhir sektor sebuah partisi, ukuran partisi, serta jenis filesystem.
 
 #|sudo fdisk /dev/loop0
-Perintah untuk memanipulasi tabel partisi pada file atau perangkat loop.
+Perintah untuk memanipulasi tabel partisi pada file atau perangkat loop dengan menggunakan utilitas fdisk.
+
+#|sudo parted /dev/sda
+Perintah untuk memanipulasi tabel partisi pada file atau perangkat loop dengan menggunakan utilitas parted.
+
+
+
+
+
 
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
