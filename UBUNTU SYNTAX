@@ -238,6 +238,9 @@ WARNING! : Penggunaan fdisk dengan menggunakan sudo dapat mengubah/menghapus/mer
 Dapat digunakan untuk melihat, membuat, menghapus, memodifikasi, mengubah ukuran, menyalin, dan memindahkan partisi pada sebuah hard disk.
   Command tersebut bertujuan mengetahui jumlah byte, sektor, model disk, ukuran sektor, label dari disk, identitas disk, path disk, awal dan akhir sektor sebuah partisi, ukuran partisi, serta jenis filesystem.
 
+#|sudo fdisk /dev/loop0
+Perintah untuk memanipulasi tabel partisi pada file atau perangkat loop.
+
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
 cat [NAMA] ---> keluarkan isi file
