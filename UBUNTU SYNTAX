@@ -233,6 +233,11 @@ Memiliki ukuran 106 MB dengan tipe partisi serta di-mount ke /boot/efi.
 #|sudo blkid
 Mendapatkan informasi terkait nama partisi atau volume, label partisi, UUID, ukuran block, serta tipe filesystem.
 
+#|sudo fdisk
+WARNING! : Penggunaan fdisk dengan menggunakan sudo dapat mengubah/menghapus/merusak data atau instalasi di komputer Anda.
+Dapat digunakan untuk melihat, membuat, menghapus, memodifikasi, mengubah ukuran, menyalin, dan memindahkan partisi pada sebuah hard disk.
+
+
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
 cat [NAMA] ---> keluarkan isi file
