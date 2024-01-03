@@ -68,8 +68,9 @@ Melihat daftar semua program yang sedang berjalan/digunakan beserta nomor proses
 #|du
 Melihat besarnya ukuran direktori yang telah digunakan.
 
-#|df
+#|df -h
 Melihat besar ukuran partisi disk dan ruang yang tersisa.
+Opsi -h EQUAL TO human readable
 
 #|date
 Menampilkan tanggal dan jam.
@@ -183,8 +184,54 @@ Menghapus sebuah group.
 #|mkfs -t ext3 -b 4096 /dev/sda1
 Perintah tersebut akan memformat /dev/sda1 dengan tipe ext3 yang tiap block-nya berukuran 4096 byte (4 KB)
 
+#|dd if=/dev/zero of=virtualdisk.img bs=1M count=1000
+Membuat sebuah file image bernama virtualdisk.img dengan block ukuran 1 MB berjumlah 1000. 
+dd berguna menyalin sebuah disk menjadi file image (disk image) atau sebaliknya.
+if=/dev/zero 
+  if=<nama file> adalah file masukan. Khusus file zero, adalah file binary yang khusus menghasilkan byte nol terus menerus
+of=virtualdisk.img
+  File keluaran, yaitu tujuan data yang disalin.
+bs EQUAL TO block size
+count EQUAL TO jumlah total yang ditulis
 
+### Setelah membuat file image 1 GB, kita perlu mount alias memasang/mengaitkannya ke sistem operasi dengan memanfaatkan loop device yang sudah tersedia di sistem operasi Linux. Loop device sering kali digunakan untuk mengaitkan cdrom ke dalam sistem operasi Linux. Loop device memiliki path /dev/loopN (loop0, loop1, loop2, dst).
 
+#|losetup
+Menemukan berbagai loop device yang sedang digunakan oleh sistem operasi. Jika loop device sedang digunakan, artinya Anda takkan bisa melakukan mount. Oleh karena itu, pilihlah loop device lain. 
+
+#|sudo losetup loop0 virtualdisk.img
+Mount (Memasang) file image ke sistem operasi
+
+#|lsblk
+Mendapatkan informasi disk yang berada pada sistem saat ini.
+Contoh hasil syntax lsblk :
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+
+loop0     7:0    0 1000M  0 loop
+
+sda       8:0    0   12G  0 disk
+
+├─sda1    8:1    0 11,9G  0 part /
+
+├─sda14   8:14   0    4M  0 part
+
+└─sda15   8:15   0  106M  0 part /boot/efi
+
+[Nama]
+[Keterangan]
+loop0
+Memiliki ukuran 1000 MB dengan tipe loop device.
+sda
+Memiliki ukuran 12 GB dengan tipe disk fisik (hard disk).
+sda1
+Memiliki ukuran 11,9 GB dengan tipe partisi serta di-mount ke /.
+sda14
+Memiliki ukuran 4 MB dengan tipe partisi.
+sda15
+Memiliki ukuran 106 MB dengan tipe partisi serta di-mount ke /boot/efi.
+
+#|sudo blkid
+Mendapatkan informasi terkait nama partisi atau volume, label partisi, UUID, ukuran block, serta tipe filesystem.
 
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
