@@ -180,6 +180,10 @@ Menambahkan user ke sebuah grup
 #|sudo groupdel namaGroup01
 Menghapus sebuah group.
 
+#|mkfs -t ext3 -b 4096 /dev/sda1
+Perintah tersebut akan memformat /dev/sda1 dengan tipe ext3 yang tiap block-nya berukuran 4096 byte (4 KB)
+
+
 
 
 touch [NAMA] ---> create file
