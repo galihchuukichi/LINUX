@@ -247,9 +247,126 @@ Perintah untuk memanipulasi tabel partisi pada file sda dengan menggunakan utili
 #|sudo parted /dev/loop0
 Perintah untuk memanipulasi tabel partisi pada file atau perangkat loop dengan menggunakan utilitas parted.
 
+###
+FILE SYSTEM - SHELL SCRIPTING
+###
+
+### DIBAWAH INI LINUX SERVICES
+#|init 6
+Me-reboot sistem
+
+#|systemctl
+Menampilkan unit dengan kondisi loaded dan active
+
+#|systemctl -t help
+Menampilkan tipe unit yang terseida untuk mengelola tiap unit.
+
+#|systemctl list-units --type=service
+Daftar semua service yang dimiliki oleh sistem dengan kondisi aktif.
+
+#|systemctl list-units --type=service --all
+Daftar semua service yang dimiliki oleh sistem.
+
+#|systemctl list-units --type=service --state=inactive
+#|systemctl list-units --type=service --state=exited
+Daftar semua service yang dimiliki oleh sistem  dan difilter berdasarkan nilai pada kolom LOAD,ACTIVE,atau SUB.
+
+#|systemctl status <namaunit.tipe>
+#|systemctl status sshd.service
+Untuk melihat status dari salah satu unit secara spesifik, kita bisa menggunakan perintah systemctl status namaunit.tipe. Jika tipe unit yang dimaksud tidak ditemukan, systemctl akan menampilkan status dari unit service (jika unit service tersebut ada)
+
+### Notes for #|systemctl status sshd.service
+● ssh.service - OpenBSD Secure Shell server
+
+     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)
+
+     Active: active (running) since Thu 2022-08-04 09:03:51 UTC; 17h ago
+
+       Docs: man:sshd(8)
+
+             man:sshd_config(5)
+
+   Main PID: 788 (sshd)
+
+      Tasks: 1 (limit: 4610)
+
+     Memory: 7.4M
+
+     CGroup: /system.slice/ssh.service
+
+             └─788 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
 
 
+Aug 04 09:04:39 hyperv-nenggala sshd[969]: Connection closed by authenticating user haris 192.168.1.7 port 51840 [preau>
 
+Aug 04 09:04:41 hyperv-nenggala sshd[971]: Accepted password for haris from 192.168.1.7 port 51842 ssh2
+
+Aug 04 09:04:41 hyperv-nenggala sshd[971]: pam_unix(sshd:session): session opened for user haris by (uid=0)
+
+Aug 04 09:04:42 hyperv-nenggala sshd[971]: pam_unix(sshd:session): session closed for user haris
+
+Aug 04 09:04:56 hyperv-nenggala sshd[1120]: Accepted publickey for haris from 192.168.1.7 port 51844 ssh2: RSA SHA256:8>
+
+Aug 04 09:04:56 hyperv-nenggala sshd[1120]: pam_unix(sshd:session): session opened for user haris by (uid=0)
+
+Aug 04 12:24:35 hyperv-nenggala sshd[2601]: Accepted publickey for haris from 192.168.1.7 port 51824 ssh2: RSA SHA256:8>
+
+Aug 04 12:24:35 hyperv-nenggala sshd[2601]: pam_unix(sshd:session): session opened for user haris by (uid=0)
+
+Aug 05 01:17:22 hyperv-nenggala sshd[3680]: Accepted publickey for haris from 192.168.1.7 port 51794 ssh2: RSA SHA256:8>
+
+Aug 05 01:17:22 hyperv-nenggala sshd[3680]: pam_unix(sshd:session): session opened for user haris by (uid=0)
+
+Bagian 
+Penjelasan
+
+Loaded
+Keterangan yang menjelaskan apakah service sudah dimuat ke memory.
+
+Active
+Keterangan yang menjelaskan apakah service sudah berjalan. Jika berjalan, ia akan menampilkan informasi durasinya.
+
+Main PID
+PID atau Process ID utama dari service, termasuk juga nama perintahnya.
+
+Status
+Terletak di paling bawah, seperti log. Bagian ini merupakan informasi tambahan terkait service.
+
+Keyword
+Penjelasan
+
+loaded
+File konfigurasi telah terproses.
+
+active (running)
+Berjalan dengan satu atau beberapa proses lainnya yang berkelanjutan.
+
+active (exited)
+Berhasil menyelesaikan satu kali konfigurasi.
+
+active (waiting)
+Berjalan, tetapi menunggu sebuah event (kejadian/peristiwa tertentu).
+
+inactive
+Tidak berjalan.
+
+enabled
+Dijalankan saat boot.
+
+disabled
+Tidak dijalankan saat boot.
+
+static
+Tidak dapat diaktifkan, tetapi dapat dimulai oleh unit lain yang diaktifkan
+secara otomatis.
+### Notes END
+
+#|systemctl is-active sshd.service
+Memverifikasi sebuah service yang sedang aktif dan berjalan (active - running)
+
+#|systemctl is-enabled <namaunit.service>
+#|systemctl is-enabled sshd.service
+Memeriksa apakah service tersebut dijalankan otomatis saat sistem dimulai. 
 
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
