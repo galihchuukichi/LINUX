@@ -393,6 +393,70 @@ Saat kita berurusan dengan sistem operasi Linux, ada beberapa kondisi yang memer
 #|systemctl restart <namaunit>
 Memulai ulang service bernama sshd
 
+#|sudo apt install net-tools
+kita juga dapat menggunakan net-tools untuk menjalankan perintah ifconfig dan route yang umumnya digunakan untuk pengaturan network interface dan route table.
+
+#|ip
+#|ip address
+#|ip addr
+#|ip a
+Mengetahui IP address yang sudah diset pada komputer
+
+#|ip route
+Mengetahui route table yang digunakan
+
+#|ip addr show interface
+#|ip addr show eth0
+Melihat IP address dan informasi perangkat jaringan dari salah satu interface saja
+$ ip addr show eth0
+
+2: eth0: <BROADCAST,MULTICAST,[1]UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+
+    [2]link/ether 00:15:5d:01:08:02 brd ff:ff:ff:ff:ff:ff
+
+    [3]inet 192.168.1.66/24 brd 192.168.1.255 scope global eth0
+
+       valid_lft forever preferred_lft forever
+
+    [4]inet6 2001:448a:2083:d84e:215:5dff:fe01:802/64 scope global tentative dynamic mngtmpaddr noprefixroute
+
+       valid_lft 232709sec preferred_lft 146309sec
+
+    [5]inet6 fe80::215:5dff:fe01:802/64 scope link
+
+       valid_lft forever preferred_lft forever
+[1]Interface eth0 memiliki status UP yang artinya ia sedang aktif.
+[2]Pada baris link/ether, terdapat informasi perihal MAC address yang ada pada perangkat jaringan. Umumnya, kita dapat mengetahui MAC address dari interface yang terhubung ke setiap jaringan, baik secara fisik dicetak pada network card (kartu jaringan) atau tertulis secara virtual pada bagian konfigurasi jaringan (bila kita menggunakan aplikasi semacam VirtualBox atau VMware).
+[3]Baris inet menunjukkan IPv4 address, prefix jaringan, dan scope-nya. Scope global artinya bisa digunakan secara normal atau bisa diakses dari luar/publik.
+[4]Baris inet6 menunjukkan IPv6 address, prefix jaringan, dan scope-nya. Scope global artinya bisa digunakan secara normal atau bisa diakses dari luar/publik.
+[5]Baris inet6 ini menunjukkan IPv6 address, prefix jaringan, dan scope-nya. Scope link berarti hanya dapat digunakan untuk komunikasi internal.
+
+### Skema pemberian nama network interface
+Skema 1: nama berdasarkan nomor indeks yang disediakan Firmware atau BIOS untuk perangkat On-Board (contoh: eno1). Skema ini akan digunakan jika informasi dari firmware atau BIOS dapat diterapkan dan tersedia. Jika tidak, diarahkan menggunakan skema 2.
+Skema 2: nama berdasarkan nomor indeks yang disediakan Firmware atau BIOS untuk perangkat PCI Express Hotplug (contoh: ens1). Skema ini akan digunakan jika informasi dari firmware atau BIOS dapat diterapkan dan tersedia. Jika tidak, diarahkan menggunakan skema 3.
+Skema 3: nama berdasarkan lokasi fisik konektor perangkat keras (contoh: enp2s0). Skema ini akan diterapkan bila memungkinkan. Jika tidak, diarahkan skema 5.
+Skema 4: nama berdasarkan MAC address dari network interface (contoh: enx78e7d1ea46da). Skema ini tidak digunakan secara default, tetapi tersedia jika user memilih.
+Skema 5: skema penamaan kernel tradisional yang tidak dapat diprediksi. Skema ini akan digunakan jika semua metode lain gagal (contoh: eth0).
+
+#|ip route
+Menampilkan informasi routing
+$ ip route
+default via 192.168.1.1 dev eth0 proto dhcp src 192.168.1.66 metric 100
+192.168.1.0/24 dev eth0 proto kernel scope link src 192.168.1.66
+192.168.1.1 dev eth0 proto dhcp scope link src 192.168.1.66 metric 100
+Semua paket jaringan yang ditujukan untuk jaringan 192.168.1.1 akan dikirim langsung ke tujuan melalui perangkat eth0. 
+Semua paket jaringan yang ditujukan untuk jaringan 192.168.1.0/24 akan dikirim langsung ke tujuan melalui perangkat eth0. 
+Semua paket lainnya akan dikirim ke router default yang terletak di 192.168.1.1 dan juga melalui perangkat eth0.
+
+#|ip -6 route
+Melihat informasi route table pada IPv6
+
+#|sudo ip addr add 192.168.1.212/24 dev eth0
+Menambahkan IP address. Pada perintah di atas, kita memberikan IP address 192.168.1.212 pada perangkat jaringan bernama eth0.
+
+
+
+
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
 cat [NAMA] ---> keluarkan isi file
