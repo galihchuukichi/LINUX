@@ -454,6 +454,16 @@ Melihat informasi route table pada IPv6
 #|sudo ip addr add 192.168.1.212/24 dev eth0
 Menambahkan IP address. Pada perintah di atas, kita memberikan IP address 192.168.1.212 pada perangkat jaringan bernama eth0.
 
+#|sudo ip route add default via 192.168.1.1
+Menambahkan gateway IP address sementara
+
+### Menambahkan DNS server address atau nameserver
+Untuk menambahkannya secara sementara, kita bisa melakukan pengubahan pada file /etc/resolv.conf dan tambahkan minimal satu baris berisikan DNS server address. Misalnya, bila kita mau menambahkan DNS server dari Google (8.8.8.8 dan 8.8.4.4), penulisannya akan terlihat seperti di bawah ini.
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+
+#|sudo ip addr flush eth0
+Menghapus konfigurasi yang disimpan sementara
 
 
 
