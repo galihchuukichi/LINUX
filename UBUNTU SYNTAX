@@ -467,6 +467,7 @@ Menghapus konfigurasi yang disimpan sementara
 
 
 
+
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
 cat [NAMA] ---> keluarkan isi file
