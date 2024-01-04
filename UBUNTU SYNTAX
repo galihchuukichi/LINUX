@@ -465,7 +465,11 @@ nameserver 8.8.4.4
 #|sudo ip addr flush eth0
 Menghapus konfigurasi yang disimpan sementara
 
-
+###
+Network Services 
+Konfigurasi Jaringan Permanen
+LANJUTIN
+###
 
 
 touch [NAMA] ---> create file
