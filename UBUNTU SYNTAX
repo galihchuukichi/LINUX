@@ -368,6 +368,31 @@ Memverifikasi sebuah service yang sedang aktif dan berjalan (active - running)
 #|systemctl is-enabled sshd.service
 Memeriksa apakah service tersebut dijalankan otomatis saat sistem dimulai. 
 
+#|systemctl is-failed sshd.service
+Memverifikasi apakah service gagal dijalankan saat sistem dimulai
+
+#|systemctl --failed --type=service
+Melihat semua service yang tidak berjalan (failed)
+
+#|systemctl start apache2.service
+Menjalankan service bernama apache (web service) dengan nama unit apache2.
+
+#|systemctl enable <namaunit.service>
+#|systemctl enable apache2.service
+Mengaktifkan service bernama apache dengan nama unit apache2.
+
+#|systemctl stop apache2.service
+Menghentikan service apache2
+
+#|systemctl disable apache2.service
+Mematikan service apache2
+
+### Memulai ulang service 
+Saat kita berurusan dengan sistem operasi Linux, ada beberapa kondisi yang memerlukan kita untuk memulai ulang atau me-restart service yang digunakan. Misalnya, jika kita melakukan perubahan pada file konfigurasi milik sebuah service atau service yang sedang berjalan tetiba stuck, kita perlu memulai ulang service tersebut. Kejadian-kejadian seperti ini akan sangat sering ditemui dalam perjalanan Anda sebagai seorang Linux System Administrator.
+
+#|systemctl restart <namaunit>
+Memulai ulang service bernama sshd
+
 touch [NAMA] ---> create file
 nano [NAMA] ---> akses untuk file
 cat [NAMA] ---> keluarkan isi file
