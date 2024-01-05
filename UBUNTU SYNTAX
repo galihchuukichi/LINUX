@@ -250,8 +250,6 @@ Perintah untuk memanipulasi tabel partisi pada file sda dengan menggunakan utili
 #|sudo parted /dev/loop0
 Perintah untuk memanipulasi tabel partisi pada file atau perangkat loop dengan menggunakan utilitas parted.
 
-###
-FILE SYSTEM - Memformat Partisi
 #|sudo mkfs.ext4 /dev/loop0p1
 mkfs EQUAL TO make filesystem
 /dev/loop0p1 
@@ -261,9 +259,21 @@ mkfs EQUAL TO make filesystem
 #|file *
 #|file gambar.png
 Mengidentifikasi jenis file
-* EQUAL TO wildcard untuk enampilkan semua yang ada pada direktori 
+* EQUAL TO wildcard untuk menampilkan semua yang ada pada direktori 
+### Perintah file tidak bisa dibohongi oleh penggantian ekstensi. Hal ini bisa dilakukan karena setiap tipe file itu ada pengenalnya (pola).
 
-###
+#|stat virtualtdisk.img
+#|stat -f virtualdisk.img
+Memberikan informasi seperti ukuran file, izin akses, ID user dan ID group, waktu akses, serta waktu lahir file. 
+-f EQUAL TO filesystem
+  Untuk melihat filesystem yang digunakan pada file tersebut, kita bisa menggunakan perintah stat -f diikuti nama file yang dimaksud.
+
+#|ls -i
+Selain perintah stat, kita juga bisa melihat nilai inode dari sebuah file dengan perintah ls -i
+
+#|sudo losetup -d /dev/loop0
+Melepas kait yang terhubung
+
 
 ### DIBAWAH INI LINUX SERVICES
 #|init 6
