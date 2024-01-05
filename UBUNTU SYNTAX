@@ -69,8 +69,11 @@ Melihat daftar semua program yang sedang berjalan/digunakan beserta nomor proses
 Melihat besarnya ukuran direktori yang telah digunakan.
 
 #|df -h
+#|df -i
 Melihat besar ukuran partisi disk dan ruang yang tersisa.
 Opsi -h EQUAL TO human readable
+Opsi -i EQUAL TO inode
+
 
 #|date
 Menampilkan tanggal dan jam.
@@ -248,7 +251,18 @@ Perintah untuk memanipulasi tabel partisi pada file sda dengan menggunakan utili
 Perintah untuk memanipulasi tabel partisi pada file atau perangkat loop dengan menggunakan utilitas parted.
 
 ###
-FILE SYSTEM - SHELL SCRIPTING
+FILE SYSTEM - Memformat Partisi
+#|sudo mkfs.ext4 /dev/loop0p1
+mkfs EQUAL TO make filesystem
+/dev/loop0p1 
+  Mengakses perangkat /dev/loop0 dengan lebih spesifik pada partisi yang ke-1.
+
+#|file virtualdisk.img
+#|file *
+#|file gambar.png
+Mengidentifikasi jenis file
+* EQUAL TO wildcard untuk enampilkan semua yang ada pada direktori 
+
 ###
 
 ### DIBAWAH INI LINUX SERVICES
