@@ -712,9 +712,96 @@ melihat semua shell variable dan environment variable dengan menjalankan perinta
 #|env 
 melihat daftar environment variable
 
+#|set | grep TEST_VAR
+Cari kata 'TEST_VAR' di teks yang dihasilkan dari perintah set.
 
+#|printenv | grep TEST_VAR
+printenv EQUAL TO menampilkan seluruh env variabale (Global Variable). Cari global variabale dengan mengandung kata 'TEST_VAR'
 
+#|bash
+Membuat child shell atau shell baru
 
+#|exit
+Kembali ke parent shell setelah membuat child shell dari perintah bash
+
+#|export TEST_VAR
+Mengubah shell variable yang sudah Anda buat ke environment variable.
+
+### FORMAT : export variable=value
+Ini adalah format unutk membuat env variable (Global Variable)
+
+### FORMAT : $(( ekspresi ))
+#|sum=$(( 10+5 ))
+~~echo sum = $sum
+OUTPUT : sum = 13
+
+### 11 Operasi Aritmatika
+Operasi 
+Penjelasan
++
+Menjumlahkan bilangan satu dengan lainnya.
+-
+Mengurangkan bilangan satu dengan lainnya.
+*
+Mengalikan bilangan satu dengan lainnya.
+/
+Menghasilkan hasil bagi dari bilangan pertama dan bilangan kedua.
+%
+Menghasilkan sisa bagi dari bilangan pertama dan bilangan kedua.
++=
+Menambahkan bilangan dengan nilai sebuah konstanta.
+-=
+Pengurangan bilangan dengan nilai sebuah konstanta.
+*=
+Perkalian bilangan dengan nilai sebuah konstanta.
+/=
+Membagi bilangan dengan nilai sebuah konstanta dan menghasilkan hasil bagi.
+%=
+Membagi bilangan dengan nilai sebuah konstanta dan menghasilkan sisa bagi.
+**
+Bilangan pertama dipangkatkan dengan bilangan kedua.
+
+#|os=('linux' 'macos' 'windows')
+nama variable-nya adalah os dan isinya memiliki 3 nilai teks: linux, macos, dan windows yang masing-masing dipisahkan dengan spasi.
+
+#|echo ${os[0]}
+OUTPUT : linux
+
+#|echo ${os[@]}
+OUTPUT : linux macos windows
+
+#|echo ${#os[@]}
+OUTPUT : 3
+mengetahui berapa panjang (atau berapa banyak elemen) dari suatu variable array
+
+### kegunaan kurung kurawal {} dalam penulisan variable sangat penting. Ketahuilah bahwa tanpa kurung kurawal pada saat menuliskan variable akan menyebabkan kesalahan arti. Contoh : 
+~~q1=('jan' 'feb' 'mar'
+~~echo $q1[1]
+OUTPUT :jan[1]
+~~echo ${q1[1]}
+OUTPUT :feb
+
+### FORMAT IF
+if [ expression ]
+then
+  Statement yang akan dijalankan apabila hasil dari expression adalah true (benar)
+else
+  Statement yang akan dijalankan apabila hasil dari expression adalah false (salah)
+fi
+
+### expression operator pada shell
+Fitur	Expression Operator	Penjelasan
+1. String comparison	
+a. =	Bernilai true jika masing-masing nilai string sama.
+b. !=	Bernilai true jika masing-masing nilai string tidak sama.
+2. Integer comparison	
+a. -eq	Bernilai true jika masing-masing nilai integer sama.
+b. -ne	Bernilai true jika masing-masing nilai integer tidak sama.
+c. -lt	Bernilai true jika satu nilai integer lebih kecil dari nilai integer yang lain.
+d. -le	Bernilai true jika satu nilai integer lebih kecil atau sama dengan nilai integer yang lain.
+e. -gt	Bernilai true jika satu nilai integer lebih besar dari nilai integer yang lain.
+f. -ge	Bernilai true jika satu nilai integer lebih besar atau sama dengan nilai integer yang lain.
+More info : https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html
 
 
 
