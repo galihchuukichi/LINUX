@@ -552,6 +552,45 @@ Contoh penggunaan perintah chgrp untuk mengganti group pemilik file latihan1 dar
 #|sudo chown -R user02:user02 /home/user01/latihan-user01
 -R EQUAL TO Recursive (Direktori beserta isinya)
 
+### Tar Operations
+Options 
+Penjelasan
+-c, --create
+Membuat sebuah arsip.
+-x, --extract
+Mengekstrak sebuah arsip.
+-t, --list
+Menampilkan daftar isi dari sebuah arsip.
+
+### Tar General Options
+Options 
+Penjelasan
+-v, --verbose
+Menampilkan semua proses (file mana saja yang diekstrak atau dimasukkan ke arsip).
+-f, --file=
+Nama file. Opsi ini harus diikuti dengan nama file yang akan digunakan atau dibuat.
+-p, --preserve-permissions
+Menyimpan permission dari directory dan file.
+
+### Tar Compressed Options
+Options 
+Penjelasan
+-z, --gzip
+Menggunakan kompresi gzip (.tar.gz).
+-j, --bzip2
+Menggunakan kompresi bzip2 (.tar.bz2). Jenis kompresi ini memiliki rasio kompresi lebih tinggi (ukuran file menjadi lebih kecil) dari pada gzip.
+-J, --xz
+Menggunakan kompresi xz (.tar.xz). Jenis kompresi ini memiliki rasio kompresi lebih tinggi dari pada bzip2.
+
+#|tar -cf arsip.tar file1 file2 file3
+#|tar cf arsipdata.tar file1 file2 file3
+#|tar --file=arsip.tar --create file1 file2 file3
+-c EQUAL TO Create (Membuat Arsip)
+-f EQUAL TO File (Mendeskripsikan Nama file)
+Perintah di atas akan membuat arsip bernama arsip.tar dengan isi file1, file2, dan file3 yang terletak pada directory aktif saat ini.
+  perintah tar juga menerima opsi tanpa tanda minus “-”.
+  Contoh command paling bawah menggunakan versi panjang
+
 
 
 ### DIBAWAH INI LINUX SERVICES
