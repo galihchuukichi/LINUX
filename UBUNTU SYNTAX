@@ -371,6 +371,165 @@ $ ls -l virtualdisk*
 -rw-rw-r-- 2 o o 1048576000 Agu 10 14:23 virtualdisklink.img
 lrwxrwxrwx 1 o o         21 Agu 10 14:38 virtualdiskshortcut.img -> virtualdiskbackup.img
 
+### #|
+Latihan Mengelola Directory dan File
+Sudah siap? Yuk, langsung saja kita mulai.
+
+1. Hal pertama yang perlu Anda lakukan adalah menginstal web server NGINX.
+sudo apt-get install nginx
+2. Masuk ke directory tempat kita akan membuat halaman web sederhana, yakni /var/www/html/.
+cd /var/www/html/
+3. Lihat apa saja berkas yang ada di lokasi tersebut.
+ls
+4. Anda akan melihat bahwa hanya ada satu file bernama index.nginx-debian.html (atau index.html) di sana. Mari kita lihat seperti apa isinya.
+ cat index.nginx-debian.html
+5. Oke, setelah diselidiki, ini adalah halaman default dari NGINX yang menampilkan teks "Welcome to nginx!". Mari kita buktikan. 
+6. Pastikan web server NGINX dalam keadaan aktif.
+sudo systemctl status nginx
+Apabila muncul error "System has not been booted with systemd as init system", jalankan dengan perintah "sudo service nginx start". Begitu juga dengan perintah systemctl yang lain. 
+7. Pastikan menampilkan status active. Jika tidak, jalankan perintah ini.
+sudo systemctl start nginx
+sudo systemctl enable nginx
+8. Selanjutnya, buka browser Anda dan ketikkan localhost atau localhost:80. Seperti ini hasilnya.
+dos:c963904e63dc1c065ab826d2a3d4072c20220822113245.png
+9. Persis seperti isi file dari index.nginx-debian.html, bukan? Namun, kita tak memerlukan file ini. Jadi, silakan hapus saja.
+sudo rm index.nginx-debian.html
+10. Buatlah dua buah directory yang akan menampung berkas web server untuk domain baru kita.
+sudo mkdir example1.com example2.com
+11. Perika hasilnya menggunakan perintah tree.
+tree
+Seperti ini hasilnya.
+├── example1.com
+
+└── example2.com
+2 directories, 0 files
+
+12. Sebelum lanjut, pastikan Anda masih berada di directory /var/www/html dengan perintah pwd.
+pwd
+13. Selanjutnya, mari kita buat file html di kedua directory. Gunakan perintah touchagar bisa membuat beberapa file sekaligus.
+sudo touch example1.com/index.html example2.com/index.html
+14. Lihat lagi struktur directory saat ini yang Anda miliki.
+tree
+Begini output-nya.
+├── example1.com
+
+│   └── index.html
+
+└── example2.com
+
+    └── index.html
+2 directories, 2 files
+
+15. Terlihat bahwa kini Anda memiliki 2 directory dan 2 file. Berikutnya, Anda perlu mengubah isi file index.html pada masing-masing directory. Untuk directory example1.com, kita akan gunakan teks editor bernama Nano.
+sudo nano example1.com/index.html
+16. Tambahkan kode ini ke file tersebut.
+<html>
+<h1>Selamat datang di halaman www.example1.com</h1>
+</html>
+17. Lalu, simpan dengan CTRL+X, tekan Y, dan Enter.
+18. Lanjutkan buat file html untuk directory example2.com.
+sudo nano example2.com/index.html
+19. Tambahkan kode ini ke file tersebut.
+<html>
+<h1>Selamat datang di halaman www.example2.com</h1>
+</html>
+20. Lalu, simpan dengan CTRL+X, tekan Y, dan Enter.
+21. Oke, urusan kita sudah beres. Perubahan yang kita lakukan takkan serta-merta berubah begitu saja pada web server NGINX. Maka dari itu, kita perlu restart NGINX terlebih dahulu dengan perintah ini.
+sudo systemctl restart nginx
+22. Setelah itu, coba buka browser Anda. 
+Buka http://localhost/example1.com/index.html untuk melihat tampilan web example1.com.
+dos:b68b949997a5538a920f6a987fd4f5a320220822123731.png
+Buka http://localhost/example2.com/index.html untuk melihat tampilan web example2.com.
+dos:235b1ee375d2287f680f8c05ed7864ec20220822123702.png
+23. Dua tampilan web tersebut persis seperti yang kita tuliskan pada file index.html di masing-masing directory.
+24. Mantap! Anda sudah sukses menyelesaikan latihan ini. Selanjutnya, mari kita hapus directory dan file yang sudah dibuat.
+sudo rm -r example1.com/ example2.com/
+25. Pastikan semua directory dan file berhasil terhapus dengan menjalankan perintah tree.
+tree
+
+### https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:be09be4c3f003637343d0a221038500120220819155920.jpeg 
+le type
+Nomor 1 pada gambar di atas menandakan suatu file type atau jenis file. Dalam kasus ini, file bernama arsip.txt memiliki jenis file "-", yang artinya ia merupakan file biasa. Berikut adalah berbagai karakter jenis file beserta artinya yang ada di Linux.
+Karakter
+
+Keterangan
+
+-
+
+File biasa
+
+d
+
+Directory
+
+l
+
+Symbolic link atau soft link (shortcut file)
+
+
+b
+
+Block device (seperti /dev/sda1)
+
+c
+
+Character device (perangkat lain yang bukan perangkat penyimpanan, seperti /dev/mouse, /dev/ttyS0, dll)
+
+p
+
+Pipe (komunikasi antarproses dalam sistem operasi)
+
+s
+
+Socket (komunikasi antarproses dalam sistem operasi)
+
+
+File permission
+Nomor 2 merupakan file permission alias perizinan/hak akses untuk file. File permission terdiri dari 9 karakter yang dikelompokkan menjadi 3 bagian, yaitu tiga karakter pertama ditujukan untuk user pemilik file (owner), tiga karakter kedua ditujukan untuk group pemilik file, dan tiga karakter ketiga untuk user di luar owner dan group pemilik file.
+
+Dalam kasus kita (lihat lagi gambar di atas), berikut adalah penjelasannya.
+
+Tiga karakter pertama -> Owner
+Tiga karakter kedua -> Group
+Tiga karakter ketiga -> Other
+
+Link count
+Nomor 3 mengacu pada link count (jumlah link atau hard link) yang dimiliki. Dalam kasus ini hanya 1.
+
+User/Owner
+Nomor 4 menampilkan nama dari user pemilik file atau owner. Dalam hal ini, nama dari user pemilik file-nya adalah haris.
+
+Group
+Nomor 5 menampilkan nama dari group pemilik file. Dalam kasus kita, nama group-nya adalah haris.
+
+File size
+Nomor 6 merupakan ukuran dari file dalam satuan byte. Bisa Anda lihat, ukuran dari file arsip.txt adalah 64 byte.
+
+Last modified date
+Nomor 7 mengacu pada tanggal terakhir ketika file dimodifikasi. Dalam kasus kita, tanggal terakhir ketika user bernama haris memodifikasi berkas arsip.txt adalah Jul 22 (22 Juli).
+
+Last modified time
+Nomor 8 menampilkan kapan waktu terakhir file dimodifikasi. Dalam kasus ini, user bernama haris terakhir kali memodifikasi berkas arsip.txt pada pukul 11:15.
+
+Nama file
+Terakhir, nomor 9 mendeskripsikan nama dari file. Sudah jelas bahwa nama file yang tertera adalah arsip.txt
+
+### FORMAT : chmod [option] [ugoa][+-=][rwx] namafile
+u -> user (atau owner) pemilik file.
+g -> group pemilik file.
+o -> other (user di luar owner dan group) pemilik file.
+a -> all, termasuk user, group, dan other.
++ -> menambahkan permission. 
+- -> menghilangkan permission.
+= -> menambahkan dan menghilangkan permission.
+r -> read (membaca file).
+w -> write (mengedit file).
+x -> execute (mengeksekusi file).
+
+#|chmod u+x latihan1
+Mengubah permission yang dimiliki oleh berkas latihan1, yakni dengan menambahkan hak akses x (eksekusi) ke user pemilik file.
+
+
 
 
 ### DIBAWAH INI LINUX SERVICES
