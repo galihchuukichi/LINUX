@@ -591,6 +591,42 @@ Perintah di atas akan membuat arsip bernama arsip.tar dengan isi file1, file2, d
   perintah tar juga menerima opsi tanpa tanda minus “-”.
   Contoh command paling bawah menggunakan versi panjang
 
+#|diff -s arsip.tar arsipdata.tar
+-s EQUAL TO Silent karena Pada command diff, opsi -s digunakan untuk menampilkan pesan jika dua file atau direktori identik, dan menampilkan pesan jika ada perbedaan. Bila tanpa opsi -s, maka tidak menampilkan pesan jika dua file atau direktori identik dan menampilkan pesan jika ada perbedaan.
+Membandingkan antara isi file arsip.tar dengan arsipdata.tar
+
+#|tar -cf arsip.tar /etc
+mengarsipkan seluruh file konfigurasi di directory /etc.
+
+### Pastikan tidak ada nama file yang sama dengan nama arsip yang akan dibuat pada directory ketika menggunakan perintah tar. Pasalnya, perintah tar akan menimpa file yang memiliki nama yang sama dengan nama arsip tanpa pemberitahuan. Hal ini juga berlaku pada command lainnya, seperti cp (copy) dan lain lain.
+
+### Satu hal yang perlu Anda ingat ketika ingin mengarsipkan directory atau file dengan perintah tar, user yang digunakan untuk menjalankan perintah tersebut wajib memiliki permission read (izin/hak akses baca) terhadap directory atau file yang dimaksud. Jika ada directory atau file yang tidak memiliki permission read untuk user tersebut, tar akan mengabaikan (tidak memasukkan ke arsip) dan melanjutkan ke directory atau file berikutnya.
+
+#|tar -cf user-etc.tar /etc
+hal ini muncul banyak Permission denied karena banyak file yang tidak memiliki izin akses READ
+
+#|sudo tar -cf sudo-etc.tar /etc
+Ini menjadi solusi ketika banyak file yang tidak memiliki akses READ saat melakukan pengarsipan
+
+#|ls -l *.tar
+Menampilkan file dalam bentuk long yang berakhiran .tar
+
+#tar -tf user-etc.tar
+-t EQUAL TO table (Melihat daftar isi arsip)
+-f EQUAL TO file (Mendeskripsikan nama file)
+mengetahui isi dari file arsip tanpa perlu mengekstraknya terlebih dahulu.
+
+#|tar -xf user-etc.tar
+-x EQUAL TO (STANDS FOR) extract
+-f EQUAL TO (STANDS FOR) file
+mengekstrak file arsip user-etc.tar
+
+
+
+
+
+
+
 
 
 ### DIBAWAH INI LINUX SERVICES
