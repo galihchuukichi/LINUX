@@ -274,6 +274,56 @@ Selain perintah stat, kita juga bisa melihat nilai inode dari sebuah file dengan
 #|sudo losetup -d /dev/loop0
 Melepas kait yang terhubung
 
+### https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:28fee9f2b37883f911ceb31f956740fa20220907142445.png
+Directory
+Isi
+
+bin
+Program atau binary yang digunakan oleh sistem operasi.
+
+boot
+Berbagai file yang diperlukan untuk proses boot.
+
+dev
+Berbagai file perangkat (device driver) khusus yang digunakan oleh sistem untuk mengakses perangkat.
+
+etc
+Konfigurasi sistem.
+
+home	
+Home directory untuk user tertentu dari sistem dan terdiri dari file individual.
+
+lib
+Berbagai kernel module dan library yang digunakan oleh sistem.
+
+media
+Mount point untuk media removable.
+
+mnt
+Mount point sementara filesystem.
+
+opt
+Paket software/aplikasi/binary tambahan.
+
+sbin
+Program atau binari untuk administrasi sistem yang hanya dijalankan oleh administrator.
+
+tmp
+Ruang yang dapat ditulisi untuk berbagai file sementara. File yang belum diakses, diubah, atau dimodifikasi selama 10 hari akan dihapus dari directory ini secara otomatis. Directory sementara lain adalah /var/tmp, di mana file yang belum diakses, diubah, atau dimodifikasi lebih dari 30 hari akan dihapus secara otomatis.
+
+usr
+Program/aplikasi yang terpasang, shared library, file/data program yang bersifat read-only. Di dalamnya terdapat sub-directory penting seperti berikut.
+/usr/bin: perintah/command untuk pengguna.
+/usr/sbin: perintah/command untuk administrasi sistem.
+/usr/local: program/aplikasi yang disesuaikan secara lokal.
+
+var
+Data variabel khusus untuk sistem yang harus tetap ada agar sistem dan program bisa bekerja dengan semestinya. Isinya berupa file yang berubah secara dinamis, seperti database, cache, log, dokumen spooled printer, dan konten website.
+
+### Di sistem operasi Linux, saat kita ingin melihat daftar directory dan file, simbol single dot "./" atau "." menandakan current directory alias direktori saat ini, sedangkan simbol double dot "../" atau ".." merepresentasikan parent directory.
+  Penggunaan single dot dan double dot juga bisa digunakan untuk memanggil sebuah berkas. Jika menjalankan perintah ./script.sh, berarti kita menjalankan shell script bernama script.sh yang ada di current directory atau direktori saat ini. Sementara itu, bila menjalankan perintah ../script.sh, itu artinya kita menjalankan shell script yang berada di satu directory sebelumnya. Nanti kita akan belajar soal shell scripting di modul berikutnya.
+
+
 
 ### DIBAWAH INI LINUX SERVICES
 #|init 6
