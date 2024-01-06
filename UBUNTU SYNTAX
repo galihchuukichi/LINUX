@@ -323,6 +323,54 @@ Data variabel khusus untuk sistem yang harus tetap ada agar sistem dan program b
 ### Di sistem operasi Linux, saat kita ingin melihat daftar directory dan file, simbol single dot "./" atau "." menandakan current directory alias direktori saat ini, sedangkan simbol double dot "../" atau ".." merepresentasikan parent directory.
   Penggunaan single dot dan double dot juga bisa digunakan untuk memanggil sebuah berkas. Jika menjalankan perintah ./script.sh, berarti kita menjalankan shell script bernama script.sh yang ada di current directory atau direktori saat ini. Sementara itu, bila menjalankan perintah ../script.sh, itu artinya kita menjalankan shell script yang berada di satu directory sebelumnya. Nanti kita akan belajar soal shell scripting di modul berikutnya.
 
+#|ln
+Membuat dua buah file saling terhubung
+
+#|df -h | grep "/$"
+menampilkan informasi tentang penggunaan disk pada partisi root (/) di Linux. Perintah tersebut terdiri dari dua bagian yang dipisahkan oleh simbol | (pipe), yaitu:
+
+df -h: perintah ini digunakan untuk menampilkan informasi tentang penggunaan disk pada semua partisi yang terpasang, dengan menggunakan satuan human-readable seperti KB, MB, GB, dan sebagainya1
+grep “/":perintah ini digunakan untuk mencari dan menampilkan baris yang mengandung pola "/” dari output perintah sebelumnya. Pola “/$” adalah regular expression yang berarti “akhir dari baris yang mengandung karakter /”. Karakter / sendiri adalah simbol untuk partisi root23
+
+Dengan menggunakan simbol | (pipe), output dari perintah df -h akan dijadikan input untuk perintah grep “/$”, sehingga hanya akan menampilkan baris yang berisi informasi tentang partisi root.
+
+### #|
+$ df -h | grep "/$"
+
+/dev/mapper/vg-root  309G  185G  (BOLD)108G  64% /
+$ dd if=/dev/zero of=virtualdisk.img bs=1M count=1000
+1000+0 records in
+1000+0 records out
+1048576000 bytes (1,0 GB, 1000 MiB) copied, 0,474332 s, 2,2 GB/s
+$ df -h | grep "/$"   
+/dev/mapper/vg-root  309G  186G  (BOLD)107G  64% /
+$ cp virtualdisk.img virtualdiskbackup.img  
+$ df -h | grep "/$"
+/dev/mapper/vg-root  309G  187G (BOLD)106G  64% /
+$ ln virtualdisk.img virtualdisklink.img
+$ df -h | grep "/$"                      
+/dev/mapper/vg-root  309G  187G  (BOLD)106G  64% /
+$ ls -l virtualdisk*
+-rw-rw-r-- 1 x z 1048576000 Agu 10 14:23 virtualdiskbackup.img
+-rw-rw-r-- 2 x z 1048576000 Agu 10 14:23 virtualdisk.img
+-rw-rw-r-- 2 x z 1048576000 Agu 10 14:23 virtualdisklink.img
+  Perhatikan pada bagian-bagian yang ditandai tebal (bold). Saat kita melakukan proses copy (cp), maka ukuran dari penyimpanan berkurang 1 GB. Kemudian, ketika kita melakukan proses link (ln), ternyata ukurannya tidak berkurang. Hanya saja, di bagian akhir ada yang ditandai tebal pada angka 2 yang berarti berkas virtualdisk.img dan virtualdisklink.img memiliki link. Itu artinya, dua berkas tersebut sebetulnya mengacu pada satu tempat yang sama. Praktik semacam ini disebut sebagai hard link.
+
+#|ln -s
+Menggunakan soft link atau symbolic link. Di sistem operasi Windows, soft link ini seperti pintasan (shortcut). Begitu juga dengan di Linux, sistem akan menginformasikan bahwa berkas baru yang dibuat adalah sebuah pintasan saja.
+
+### #|
+$ ls -l virtualdisk*
+-rw-rw-r-- 1 o o 1048576000 Agu 10 14:23 virtualdiskbackup.img
+-rw-rw-r-- 2 o o 1048576000 Agu 10 14:23 virtualdisk.img
+-rw-rw-r-- 2 o o 1048576000 Agu 10 14:23 virtualdisklink.img
+$ ln -s virtualdiskbackup.img virtualdiskshortcut.img
+$ ls -l virtualdisk*                                  
+-rw-rw-r-- 1 o o 1048576000 Agu 10 14:23 virtualdiskbackup.img
+-rw-rw-r-- 2 o o 1048576000 Agu 10 14:23 virtualdisk.img
+-rw-rw-r-- 2 o o 1048576000 Agu 10 14:23 virtualdisklink.img
+lrwxrwxrwx 1 o o         21 Agu 10 14:38 virtualdiskshortcut.img -> virtualdiskbackup.img
+
 
 
 ### DIBAWAH INI LINUX SERVICES
