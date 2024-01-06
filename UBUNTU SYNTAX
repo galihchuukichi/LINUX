@@ -529,7 +529,25 @@ x -> execute (mengeksekusi file).
 #|chmod u+x latihan1
 Mengubah permission yang dimiliki oleh berkas latihan1, yakni dengan menambahkan hak akses x (eksekusi) ke user pemilik file.
 
+### FORMAT : chmod [option] kode_octal file
+ r = 4, w = 2, dan x = 1
+Angka tersebut sebetulnya didasari dari penomoran dalam biner, berikut kita bahas secara singkat. 
+Format permission adalah rwx.
+Jika ingin memberikan permission untuk nilai r (read) saja, penulisan dalam binernya adalah 100 (dalam desimal artinya angka 4).
+Jika ingin memberikan permission untuk nilai w (write) saja, penulisan dalam binernya adalah 010 (dalam desimal artinya angka 2).
+Jika ingin memberikan permission untuk x (execute) saja, penulisan dalam binernya adalah 001 (dalam desimal artinya angka 1).
+Ketika digabungkan, maka penulisannya pun mengombinasikan angka-angka tersebut. Sebagai contoh, jika ingin memberikan permission untuk semua aspek rwx (read, write, dan execute), penulisan dalam binernya adalah 111 (dalam desimal artinya angka 7).
 
+#|chmod 744 latihan1
+Menambahkan akses r, w, dan x ke user pemilik file; sedangkan group dan other (user lain) hanya akses r.
+
+### FORMAT : chown user_baru:group_baru namafile
+#|sudo chown ruby:ruby latihan1
+Berikut contoh penggunaan perintah chown untuk mengganti pemilik file latihan1 dari haris(default di materi) ke ruby.
+
+### FORMAT : chgrp group_baru namafile
+#|sudo chgrp ruby latihan1
+Contoh penggunaan perintah chgrp untuk mengganti group pemilik file latihan1 dari haris ke ruby.
 
 
 ### DIBAWAH INI LINUX SERVICES
