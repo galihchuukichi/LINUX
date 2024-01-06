@@ -621,6 +621,36 @@ mengetahui isi dari file arsip tanpa perlu mengekstraknya terlebih dahulu.
 -f EQUAL TO (STANDS FOR) file
 mengekstrak file arsip user-etc.tar
 
+### Dari ketiga opsi tersebut, kompresi gzip memiliki proses yang paling cepat, umurnya paling tua (lebih dulu ada), serta didukung banyak distribusi Linux (bahkan di luar Linux). Kompresi bzip2 mampu menghasilkan ukuran arsip yang lebih kecil ketimbang gzip, tetapi dukungan penggunaannya tidak sebanyak gzip. Sementara itu, kompresi xz merupakan opsi yang paling baru dan memiliki rasio kompresi tertinggi sehingga mampu menghasilkan ukuran arsip paling kecil dibanding gzip dan bzip2, tetapi dukungan penggunaannya paling sedikit karena tergolong masih baru.
+
+#|sudo tar -czf arsip.tar.gz /etc
+#|sudo tar -czf arsip.tgz /etc
+-c STANDS FOR create
+-z STANDS FOR gzip
+-f STANDS FOR file
+Membuat arsip terkompresi dengan ekstensi .tar.gz atau .tgz untuk directory /etc dengan nama file arsip.tar.gz atau arsip.tgz
+
+#|sudo tar -cjf arsip.tar.bz2 /etc
+#|sudo tar -cjf arsip.tbz2 /etc
+-c STANDS FOR create
+-j STANDS FOR bzip2
+-f STANDS FOR file
+Membuat arsip terkompresi dengan ekstensi .tar.bz2 atau .tbz2 untuk directory /etc dengan nama file arsip.tar.bz2 atau arsip.tbz2
+
+#|sudo tar -cJf arsip.tar.xz /etc
+#|sudo tar -cJf arsip.txz /etc
+-c STANDS FOR create
+-J STANDS FOR xz
+-f STANDS FOR file
+Membuat arsip terkompresi dengan ekstensi .tar.xz atau .txz untuk directory /etc dengan nama file arsip.tar.xz atau arsip.txz
+
+#|tar -xzf arsip.tar.gz # THIS IS FOR gzip
+#|tar -xjf arsip.tar.bz2 # THIS IS FOR bzip2
+#|tar -xJf arsip.tar.xz # THIS IS FOR xz
+Mengekstrak Arsip Terkompres
+
+
+
 
 
 
