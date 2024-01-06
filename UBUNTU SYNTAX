@@ -803,6 +803,141 @@ e. -gt	Bernilai true jika satu nilai integer lebih besar dari nilai integer yang
 f. -ge	Bernilai true jika satu nilai integer lebih besar atau sama dengan nilai integer yang lain.
 More info : https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html
 
+#|nano contoh-if.sh
+### contoh-if.sh ###
+#!/bin/sh
+ 
+a=10
+b=20
+ 
+if [ $a -eq $b ]
+then
+  echo "a sama dengan b"
+else
+  echo "a tidak sama dengan b"
+fi
+
+### contoh-if.sh ###
+OUTPUT : a tidak sama dengan b
+### DEFAULT : Tidak bisa dieksekusi
+
+### contoh-if.sh ###
+#!/bin/sh
+ 
+nilai=80
+ 
+if [ $nilai -ge 90 ]; then 
+  echo "Nilai Raport Anda A"
+elif [ $nilai -ge 80 ]; then
+  echo "Nilai Raport Anda B"
+elif [ $nilai -ge 60 ]; then
+  echo "Nilai Raport Anda C"
+else
+  echo "Nilai Raport Anda D"
+fi
+### contoh-if.sh ###
+OUTPUT : Nilai Raport Anda B
+
+### FORMAT : FOR
+for var in teks1 teks2 ... teksN
+do
+  Statement yang akan dieksekusi tiap teks
+done
+
+#|nano contoh-for.sh
+### contoh-for.sh ###
+#!/bin/sh
+ 
+for angka in 0 1 2 3 4 5 6 7 8 9
+do
+  echo $angka
+done
+### contoh-for.sh ###
+
+### contoh-for.sh ###
+#!/bin/sh
+ 
+for berkas in /var/log/*.log
+do
+  ls -lh $berkas
+done
+### contoh-for.sh ###
+#|for berkas in /var/log/*.log; do ls -lh $berkas; done
+Menggunakan script tersebut, kita akan mendapatkan informasi berupa daftar berkas berekstensi .log dari directory /var/log/ menggunakan format daftar panjang dan mudah dibaca. Seperti ini outputnya.
+
+### FORMAT : while
+while command
+do
+  Statement dijalankan saat command menghasilkan nilai true
+done
+
+#|nano contoh-while.sh
+### contoh-while.sh ###
+#!/bin/sh
+ 
+i=0
+ 
+while [ $i -le 2 ]
+do
+  echo Number: $i
+  i=$((i+=1))
+done
+### contoh-while.sh ###
+
+### contoh-while.sh ###
+#!/bin/sh
+ 
+# true sebagai penanda bahwa perulangan ini berlangsung terus
+while true
+do
+  # misalnya media penyimpanannya adalah /dev/vda1
+  usage=$( df -h /dev/vda1 | grep /dev/vda | awk '{ print $5 }' )
+  # tunda 1 jam hingga pengecekan berikutnya
+  sleep 3600
+done
+### contoh-while.sh ###
+
+### FORMAT : function
+function_name () {
+  command
+}
+
+### FORMAT : function
+function_name () { command; }
+
+### function_name merupakan nama dari sebuah function yang nantinya akan kita gunakan untuk memanggil function di tempat lain pada shell script yang dibuat.
+Gunakan nama function yang deskriptif. Meskipun penamaan tidak begitu penting saat menguji sebuah function, tetapi nama yang deskriptif sangat membantu ketika Developer lain melihat atau mempelajari kode kita.
+Nama function harus diikuti oleh tanda kurung () dan diikuti oleh rangkaian command atau perintah yang diperlukan di dalam bracket{}.
+Jika kita menambahkan kata function, maka tanda kurung menjadi opsional.
+Saat menulis function dalam satu baris, command atau perintah harus diakhiri dengan titik koma (;), baik dalam berkas script maupun terminal secara langsung.
+Command atau perintah di antara kurung kurawal { command } disebut sebagai function's body, yang mana dapat berisi sejumlah declaration (deklarasi), variable (variabel), loop (perulangan), atau conditional statement (alias percabangan).
+
+#|nano hello.sh
+### hello.sh ###
+#!/bin/sh
+ 
+# Tulis function di sini
+Hello () {
+  echo "Hello World"
+}
+ 
+# Panggil function
+Hello
+### hello.sh ###
+
+### Penerapan function pada terminal
+Deklarasikan function yang sama seperti contoh sebelumnya, tetapi kini bedanya ditulis dalam satu baris seperti berikut.
+Hello () { echo "Hello World"; }
+Eksekusi function barusan dengan memanggil namanya pada terminal.
+Hello
+Maka hasilnya akan seperti berikut.
+OUTPUT : Hello World
+
+
+
+
+
+
 
 
 
