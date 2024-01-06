@@ -933,6 +933,52 @@ Hello
 Maka hasilnya akan seperti berikut.
 OUTPUT : Hello World
 
+### tiga standard stream yang ada di Linux, yakni stdin, stdout, dan stderr. 
+stdout: menampilkan output (keluaran) yang normal dari suatu perintah atau script (file descriptor 1).
+stderr: menampilkan output (keluaran) berupa error dari suatu command atau script (file descriptor 2).
+stdin: membaca/menerima input (masukan) dari keyboard (file descriptor 0).
+Catatan: File descriptor adalah sebuah pengidentifikasi unik untuk sebuah file atau sumber daya input/output lainnya.
+
+#|ls -alh > ls.txt
+Secara default, simbol > akan redirect stdout. Alternatif lain, Anda juga bisa menggunakan 1> untuk redirect stdout, contoh: ls -alh 1> ls.txt. Ingat bahwa file descriptor dari stdout adalah 1 sehingga itu akan menghasilkan hal yang sama.
+
+### ls.txt ###
+Halo dunia
+### ls.txt ###
+#|echo baris berikutnya >> ls.txt
+### ls.txt ###
+Halo dunia
+baris berikutnya
+### ls.txt ###
+
+#|wc -l ls.txt
+wc STANDS FOR Word count
+-l STANDS FOR line
+command tersebut spesifik mencetak jumlah baris pada file ls.txt
+
+#|>ls.txt
+Mengosongkan isi berkas
+
+#|cat gaAdafile.txt 2> error.txt
+mengarahkan error dari output perintah tersebut ke sebuah berkas. 
+
+#|wc -l < ls.txt
+OUTPUT : 0 (Tadi kan dikosongin :>)
+Melakukan perintah wc -l dengan input dari ls.txt
+
+#|mysql -u USERNAME < database_dump.sql
+Contoh lain yang sering dipakai ketika menggunakan input redirection adalah saat kita me-restore sebuah database mysql/mariadb. Contoh penulisannya seperti di bawah ini.
+
+#|ls -l /var/log/*.log | wc -l
+Dalam contoh di atas, kita mendaftar semua berkas yang memiliki nama dengan akhiran .log, kemudian output dari perintah tersebut digunakan sebagai input dari program wc sehingga ia akan menghitung jumlah baris (dalam hal ini berarti jumah berkas) dari perintah sebelumnya. Singkatnya, kita akan tahu jumlah berkas log yang ada di direktori /var/log/.
+
+#|ls -l /var/log/ | grep "\.log$" | wc -l
+Penjelasan untuk perintah grep "\.log$" adalah kita melakukan penyaringan/pemfilteran dengan pola "\.log$". Itu adalah pola ekspresi reguler (regular expression) yang artinya kita mencari teks yang diakhiri dengan .log. Untuk lebih jauh mengenal regular expression, Anda bisa belajar dari situs https://regex101.com. 
+
+### Penjelasan lebih jauh mengenai pola "\.log$" adalah sebagai berikut.
+Tanda $ di akhir mengartikan bahwa kita ingin memastikan bahwa kata ".log" berada di akhir teks, misalnya "file.log". Artinya, kata “file.logging” itu tidak cocok dengan pola tersebut. Pasalnya, meski mengandung kata “.log” tapi posisinya tidak di akhir.
+Dalam regular expression, huruf titik . itu akan cocok untuk semua karakter. Artinya, jika kita menuliskan pola ".log$", maka akan cocok pula untuk “syslog”. Ini karena huruf “s” itu cocok untuk menggantikan karakter “.” pada regular expression. Namun, karena yang kita inginkan adalah cocok dengan karakter titik "." saja, maka cara penulisannya adalah “\.”.
+
 
 
 
