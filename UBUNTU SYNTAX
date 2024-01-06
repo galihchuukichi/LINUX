@@ -332,6 +332,9 @@ menampilkan informasi tentang penggunaan disk pada partisi root (/) di Linux. Pe
 df -h: perintah ini digunakan untuk menampilkan informasi tentang penggunaan disk pada semua partisi yang terpasang, dengan menggunakan satuan human-readable seperti KB, MB, GB, dan sebagainya1
 grep “/":perintah ini digunakan untuk mencari dan menampilkan baris yang mengandung pola "/” dari output perintah sebelumnya. Pola “/$” adalah regular expression yang berarti “akhir dari baris yang mengandung karakter /”. Karakter / sendiri adalah simbol untuk partisi root23
 
+#|ls | grep aldisk
+Cari file pada direktori saat ini berdasarkan perintah ls, lalu cari yang mengandung kata 'aldisk'
+
 Dengan menggunakan simbol | (pipe), output dari perintah df -h akan dijadikan input untuk perintah grep “/$”, sehingga hanya akan menampilkan baris yang berisi informasi tentang partisi root.
 
 ### #|
@@ -593,7 +596,7 @@ Perintah di atas akan membuat arsip bernama arsip.tar dengan isi file1, file2, d
 
 #|diff -s arsip.tar arsipdata.tar
 -s EQUAL TO Silent karena Pada command diff, opsi -s digunakan untuk menampilkan pesan jika dua file atau direktori identik, dan menampilkan pesan jika ada perbedaan. Bila tanpa opsi -s, maka tidak menampilkan pesan jika dua file atau direktori identik dan menampilkan pesan jika ada perbedaan.
-Membandingkan antara isi file arsip.tar dengan arsipdata.tar
+Membandingkan antara isi file arsip.tar dengan arsipdata.tar. Tidak bisa digunakan untuk membandingkan variable.
 
 #|tar -cf arsip.tar /etc
 mengarsipkan seluruh file konfigurasi di directory /etc.
@@ -703,7 +706,11 @@ Menampilkan value dari variable number
 #|echo ${number}
 Penulisan alternatif untuk pemanggilan variable adalah dengan menggunakan sepasang kurung kurawal (${}) untuk mengatasi masalah diatas.
 
+#|set
+melihat semua shell variable dan environment variable dengan menjalankan perintah berikut. perintah di atas akan menampilkan daftar yang begitu panjang. Namun, jika teliti, Anda bisa menemukan variable bernama number yang tadi kita definisikan di awal.
 
+#|env 
+melihat daftar environment variable
 
 
 
