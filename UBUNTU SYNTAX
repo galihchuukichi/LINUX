@@ -979,26 +979,119 @@ Penjelasan untuk perintah grep "\.log$" adalah kita melakukan penyaringan/pemfil
 Tanda $ di akhir mengartikan bahwa kita ingin memastikan bahwa kata ".log" berada di akhir teks, misalnya "file.log". Artinya, kata “file.logging” itu tidak cocok dengan pola tersebut. Pasalnya, meski mengandung kata “.log” tapi posisinya tidak di akhir.
 Dalam regular expression, huruf titik . itu akan cocok untuk semua karakter. Artinya, jika kita menuliskan pola ".log$", maka akan cocok pula untuk “syslog”. Ini karena huruf “s” itu cocok untuk menggantikan karakter “.” pada regular expression. Namun, karena yang kita inginkan adalah cocok dengan karakter titik "." saja, maka cara penulisannya adalah “\.”.
 
+### service juga dikenal sebagai daemon. Terkadang, nama service atau daemon ini diakhiri dengan huruf d. Misalnya, sshd (atau bisa kita baca ssh daemon) adalah nama layanan yang menangani SSH.
 
+### https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:781dcc4e50c177712a4cae3dd00ce3a920220907143815.png
+Berikut penjelasan lengkapnya.
 
+1.Pada mesin/komputer yang lebih baru, UEFI (Unified Extensible Firmware Interface) akan mendefinisikan konfigurasi proses boot (proses memulai sistem komputer) yang tersimpan pada NVRAM dan menentukan Boot Loader.
+Sementara itu, pada sistem yang lebih lawas, bagian ini diproses oleh BIOS yang akan memberikan informasi terkait perangkat yang digunakan; melakukan pemeriksaan sistem; serta pengujian perangkat keras dan daya; lalu melanjutkannya ke Boot Loader. Penjelasan tentang perbedaan UEFI dan BIOS dapat Anda simak di laman ini. https://www.freecodecamp.org/news/uefi-vs-bios/
 
+2. Sebuah Boot Loader memiliki tugas utama untuk mengelola dan mengeksekusi urutan boot dari sistem komputer. Program Boot Loader biasanya dimulai setelah komputer atau BIOS selesai melakukan pemeriksaan sistem serta pengujian terhadap perangkat keras dan daya.
 
+Boot Loader akan mengambil informasi kernel sistem operasi dari hard disk atau perangkat boot tertentu sesuai urutan boot (bisa dari keping CD/DVD, USB Flashdisk, ataupun perangkat jaringan) ke dalam memori utama. Ada beberapa jenis Boot Loader yang dikenal di Linux, seperti GRUB 1, GRUB 2, LILO, rEFInd, systemd-boot, dan SYSLINUX.
 
+3.Kernel pada umumnya terletak pada direktori /boot dalam bentuk terkompresi (Anda akan menemukan direktori /boot kosong bila menggunakan WSL. Pasalnya, WSL tidak melakukan proses boot dan pembacaan kernel Linux secara normal).
 
+Hal pertama yang dijalankan adalah proses ekstrak kernel yang berada pada direktori /boot. Kemudian, berlanjut ke inisiasi sistem, filesystem, dan driver; serta mounting filesystem. Selanjutnya, kernel akan menyerahkan proses berikutnya ke init. Dari sini, proses boot dikatakan selesai dengan baik.
 
+4.Init (atau sering disebut init system) adalah unit atau program yang bertanggung jawab untuk menjalankan service alias daemon agar sistem operasi bisa sepenuhnya berjalan. Proses dari berjalannya init ini merupakan akar dari hierarki keseluruhan proses yang ada pada sistem operasi Linux. Dengan demikian, init memiliki process ID (PID) bernilai 1. PID 1 ini akan berjalan terus sampai kita mematikan (power off) komputer.
 
-### DIBAWAH INI LINUX SERVICES
+Selain bertugas untuk mengelola service atau daemon, init juga menangani orphaned process, yaitu subproses yang sudah tidak memiliki induk proses (misalnya, induk proses sudah dimatikan, tetapi subproses masih ada).
+
+5.Pada bagian ini, umumnya menjalankan inisiasi program atau aplikasi yang nantinya berjalan untuk digunakan oleh user, tergantung lingkungan yang nantinya akan digunakan.
+Pada CLI, proses ini akan menjalankan terminal, shell, dan environment yang dibutuhkan oleh keduanya.
+Pada GUI, proses ini akan menjalankan display manager, graphical server, dan pendukung lainnya agar desktop environment bisa berjalan.
+
+###  Sysvinit diturunkan dari Unix yang mendeskripsikan proses-proses yang ada dengan sebutan runlevel. Untuk mempermudah pemahaman, bayangkan runlevel ini sebagai titik di mana sistem mulai dijalankan. Misalnya:
+runlevel 1 adalah level di mana sistem dijalankan dengan konfigurasi paling mendasar, yakni akses sederhana satu user (single user) dengan CLI.
+runlevel 5 adalah level paling advance (tinggi) dengan multiuser, jaringan, serta GUI. 
+runlevel 0 digunakan untuk menghentikan/mematikan (halt) sistem.
+runlevel 6 digunakan untuk memulai ulang (reboot) sistem.
+
+### 
+Runlevel
+Generic
+Fedora Core
+Slackware
+Debian
+0
+Halt
+Halt
+Halt
+Halt
+1
+Mode single-user
+Mode single-user
+Mode single-user
+Mode single-user
+2
+Mode multi-user dasar (tanpa jaringan/ networking)
+Dapat ditentukan user
+Dapat ditentukan user
+Mode multi-user
+3
+Mode multi-user penuh (berbasis CLI)
+Mode multi-user
+Mode multi-user. Runlevel default
+Mode multi-user
+4
+Tidak digunakan
+Tidak digunakan
+X11 dengan KDM/GDM/XDM (session managers)
+Mode multi-user
+5
+Mode multi-user penuh (berbasis GUI)
+Mode multi-user penuh (dengan login berbasis GUI). Runlevel default
+Dapat ditentukan user
+Mode multi-user
+6
+Reboot
+Reboot
+Reboot
+Reboot
+
+### Namun, satu hal yang umum di antara distro Linux adalah jika ingin mengubah level default maka kita harus mengedit /etc/initab. Tentu saja diperlukan akses root atau sudo untuk mengedit file tersebut.
+
+### Pertanyannya, mengapa kita ingin mengubah runlevel? Biasanya, kita hanya akan menggunakan mode GUI penuh atau mode multi-user berbasis CLI (runlevel 4 atau 5). Akan tetapi, ada kalanya kita membutuhkan runlevel 1 atau 2, misal jika terjadi beberapa masalah pada sistem sehingga kita memerlukan akses yang paling mendasar. 
+Catatan: runlevel 0 dan 6 tentu saja tidak boleh digunakan sebagai default. Alasannya sudah jelas, kita tidak ingin sistem mati atau reboot setelah dinyalakan.
+
 #|init 6
 Me-reboot sistem
+
+### Secara khusus, systemd mengatasi kekurangan dari init system sebelumnya dengan melakukan hal-hal berikut.
+
+Menyediakan cara yang seragam untuk mengelola startup (proses memulai sistem komputer) di seluruh distribusi Linux.
+Mengimplementasikan konfigurasi service yang lebih cepat dan mudah dipahami.
+Menawarkan rangkaian pengelolaan sistem yang lebih modern, termasuk monitoring (pemantauan), resource usage control (kontrol penggunaan sumber daya), dan audit yang built-in (bawaan).
+Kemampuan paralelisasi (memulai beberapa service secara bersamaan) sehingga dapat meningkatkan kecepatan boot suatu sistem.
+Memulai daemon sesuai permintaan tanpa memerlukan service lain yang terpisah.
+Manajemen ketergantungan (dependency) akan sebuah service yang otomatis sehingga dapat mencegah waktu tunggu yang lama. Misalnya, service yang bergantung pada jaringan tidak akan mencoba untuk memulai sampai jaringan tersedia.
+Metode pelacakan proses yang saling terkait bersama-sama dengan menggunakan Linux control groups.
+
+### systemd menggunakan unit untuk mengelola berbagai jenis objek. Beberapa tipe unit yang umum digunakan adalah sebagai berikut.
+Unit service memiliki ekstensi .service dan mewakili service sistem. Jenis unit ini digunakan untuk memulai daemon yang sering diakses, salah satu contohnya seperti web server.
+Unit socket memiliki ekstensi .socket dan mewakili socket komunikasi antarproses (inter-process communication atau disingkat IPC) yang harus dipantau oleh systemd. Jika client terhubung ke socket, systemd akan memulai daemon dan meneruskan koneksi ke sana. Unit socket digunakan untuk menunda dimulainya service pada waktu boot dan untuk memulai service yang lebih jarang digunakan sesuai permintaan.
+Unit path memiliki ekstensi .path dan berfungsi untuk menunda aktivasi service hingga terjadi perubahan pada filesystem tertentu. Unit ini biasanya digunakan untuk service yang menggunakan spool directory (/var/spool) seperti pada sistem pencetakan (printing).
 
 #|systemctl
 Menampilkan unit dengan kondisi loaded dan active
 
 #|systemctl -t help
-Menampilkan tipe unit yang terseida untuk mengelola tiap unit.
+Menampilkan tipe unit yang tersedia untuk mengelola tiap unit.
 
 #|systemctl list-units --type=service
 Daftar semua service yang dimiliki oleh sistem dengan kondisi aktif.
+
+### Setelah melakukan command di atas, penjelasannya yakni : 
+Kolom	Penjelasan
+UNIT	Nama service.
+LOAD	
+Keterangan yang menjelaskan apakah systemd membaca konfigurasi unit dengan benar dan memuat unit ke dalam memori.
+
+ACTIVE	Kondisi high-level dari unit, apakah aktif (bisa dimulai/start dengan sukses) atau tidak.
+SUB	Kondisi low-level dari unit. Bagian ini menginformasikan lebih detail terkait unit, seperti tipe unit, kondisi (state), dan bagaimana unit dijalankan.
+DESCRIPTION	Penjelasan singkat dari sebuah unit.
 
 #|systemctl list-units --type=service --all
 Daftar semua service yang dimiliki oleh sistem.
