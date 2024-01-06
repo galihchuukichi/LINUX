@@ -649,6 +649,59 @@ Membuat arsip terkompresi dengan ekstensi .tar.xz atau .txz untuk directory /etc
 #|tar -xJf arsip.tar.xz # THIS IS FOR xz
 Mengekstrak Arsip Terkompres
 
+#|date; ls
+menampilkan informasi tanggal terlebih dahulu setiap kali akan melihat daftar berkas pada suatu directory (direktori).
+
+#|cat test.txt && date
+perintah date hanya akan dieksekusi apabila perintah cat test.txt sukses dijalankan. Jika ternyata berkas test.txt tidak ada atau tidak ditemukan, berarti proses cat akan gagal dan perintah date takkan dieksekusi.
+
+### Pembuatan shell script yang baik pada suatu berkas bisa menghasilkan program yang dapat dieksekusi. Untuk itu, diperlukan tiga langkah sebagai berikut.
+1. Ditulis di berkas dengan ekstensi .sh.
+2. Atur hak akses berkas tersebut agar dapat dieksekusi. Ini bisa dicapai dengan mengeksekusi perintah chmod +x namaberkas.sh. Ingat kembali bahwa chmod adalah perintah untuk mengganti mode pada suatu berkas.
+3. Tempatkan di directory yang dapat ditemukan oleh shell saat berkas tersebut dipanggil/dieksekusi.
+
+#|#! /bin/bash
+mendeklarasikan ke shell tentang program apa yang harus digunakan untuk menjalankan script yang dibuat. Baris pertama dimulai dengan tanda pagar dan tanda seru tanpa spasi (#!), lalu diikuti dengan nama program shell yang akan menjalankan script, dalam contoh di atas menggunakan bash (/bin/bash). Gabungan tanda pagar dan tanda seru (#!) dalam bahasa Inggris istilahnya adalah shebang atau shabang.
+
+#|# Hello World Script
+merupakan sebuah komentar yang fungsinya memberi informasi atau catatan untuk kita atau orang lain yang akan membaca berkas tersebut di kemudian hari.
+
+#|echo "Hello World!"
+menampilkan teks Hello World!.
+
+### Secara default, berkas hello.sh (Yang dibuat dari command : nano hello.sh) sebenarnya tidak dapat dieksekusi kecuali diberi izin x (executeable)
+
+#|./hello.sh
+#|/home/haris/hello.sh
+#|bash hello.sh
+menjalankan script hello.sh yang berada di direktori saat ini
+
+### Variable dapat dimulai dengan karakter alfabet atau underscore, lalu diikuti alfabet, nomor, atau underscore.
+Variable bersifat case sensitive, jadi "number" dan "Number" adalah variable yang berbeda. Artinya, Anda bisa membuat variable dalam huruf kecil (lower case), kapital (upper case), ataupun gabungan dari keduanya.
+Nama variable tidak bisa dimulai dengan angka.
+Jangan menggunakan karakter spesial untuk menamai sebuah variable, contohnya tidak menggunakan simbol ataupun spasi.
+
+#|number=100
+Memasukkan nilai 100 (string) ke variable number
+
+#|data=/home/haris/backups
+memasukkan sebuah path /home/haris/backups ke dalam variable bernama data
+
+### Pada penulisan variable, shell tidak memperbolehkan adanya karakter spasi (“ “), baik sebelum maupun sesudah tanda sama dengan (=).
+
+#|program="/mnt/C/Program Files"
+Solusi untuk larangan spasi pada shell sesudah tanda sama dengan (=). Itu adalah contoh ketika kita ingin membuat variable yang akan digunakan untuk membaca (mount) data sistem operasi Windows di komputer Linux, di mana kita menempatkannya di directory (direktori) /mnt sehingga selanjutnya kita bisa akses berkas dan direktori di dalamnya. mount adalah perintah yang digunakan untuk menyematkan filesystem dari suatu perangkat penyimpanan ke salah satu directory.
+
+#|echo $number
+#|echo "$number"
+Menampilkan value dari variable number
+
+### Sederhananya, $number akan diganti dengan value-nya yaitu 100 terlebih dahulu, lalu dilanjutkan dengan mengeksekusi echo 100 sehingga pada akhirnya akan menampilkan angka 100 ke layar.
+
+### TIDAK BISA melakukan pemanggilan variable number dengan command echo '$number'. OUTPUT : $number. 
+
+#|echo ${number}
+Penulisan alternatif untuk pemanggilan variable adalah dengan menggunakan sepasang kurung kurawal (${}) untuk mengatasi masalah diatas.
 
 
 
